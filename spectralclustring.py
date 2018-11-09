@@ -14,7 +14,14 @@ import numpy as np
 if __name__ == "__main__":   
     #X是训练集
     
-    f1=open(r"C:\Users\mayi\Desktop\论文二次数据-图表\实验数据\55-24h-1m.csv","rb")
+    f1=open(r"C:\Users\mayi\Desktop\论文二次数据-图表\实验数据\55-3h-1m.csv","rb")
+    
+    a0b1c2= {0,1,0,0,0,1,1,2,0,1,1,2,1,0,1,2,2,2,2,0,0,0,1,2,0,1,2,2,0,0,0,2,2,0,1,1,1,1,2,1,1,2,2,1,1,0,2,0,0,1,0,0,1,0,0}
+    a0b2c1= {0,2,0,0,0,2,2,1,0,2,2,1,2,0,2,1,1,1,1,0,0,0,2,1,0,2,1,1,0,0,0,1,1,0,2,2,2,2,1,2,2,1,1,2,2,0,1,0,0,2,0,0,2,0,0}
+    a1b0c2= {1,0,1,1,1,0,0,2,1,0,0,2,0,1,0,2,2,2,2,1,1,1,0,2,1,0,2,2,1,1,1,2,2,1,0,0,0,0,2,0,0,2,2,0,0,1,2,1,1,0,1,1,0,1,1}
+    a1b2c0= {1,2,1,1,1,2,2,0,1,2,2,0,2,1,2,0,0,0,0,1,1,1,2,0,1,2,0,0,1,1,1,0,0,1,2,2,2,2,0,2,2,0,0,2,2,1,0,1,1,2,1,1,2,1,1}
+    a2b0c1= {2,0,2,2,2,0,0,1,2,0,0,1,0,2,0,1,1,1,1,2,2,2,0,1,2,0,1,1,2,2,2,1,1,2,0,0,0,0,1,0,0,1,1,0,0,2,1,2,2,0,2,2,0,2,2}
+    a2b1c0= {2,1,2,2,2,1,1,0,2,1,1,0,1,2,1,0,0,0,0,2,2,2,1,0,2,1,0,0,2,2,2,0,0,2,1,1,1,1,0,1,1,0,0,1,1,2,0,2,2,1,2,2,1,2,2}
     
     data_read=np.loadtxt(f1,delimiter=",",skiprows=0)
     f1.close()
@@ -24,13 +31,7 @@ if __name__ == "__main__":
     spectral=SpectralClustering(n_clusters=3,affinity='nearest_neighbors',
                                         gamma=1,n_neighbors=8,assign_labels='discretize').fit_predict(X)
     print(spectral)
-#        count=0
-#        idx=0
-#        if(raw_label[idx] == spectral[idx] and idx<55):
-#            count+=1
-#            idx+=1
-#        count/=55;
-#        print(count)
-#    
-    #km=KMeans(n_clusters=3,init='k-means++',n_init=10,max_iter=300,tol=0.0001).fit_predict(X)
-    #print(km)
+
+    km=KMeans(n_clusters=3,init='random',n_init=10,max_iter=300,tol=0.0001).fit_predict(X)
+    print(km)
+    
